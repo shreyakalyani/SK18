@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .animated-heart {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation: floatHeart 3s infinite linear;
+    }
+
+    .animated-star {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: gold;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      animation: twinkle 2s infinite;
+    }
+
+    .animated-circle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: dodgerblue;
+      border-radius: 50%;
+      animation: floatCircle 3s infinite linear;
+    }
+
+    .animated-square {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff7f50;
+      animation: floatSquare 2s infinite linear;
+    }
+
+    .animated-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid violet;
+      animation: floatTriangle 2.5s infinite linear;
+    }
+
+    #card {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      background-color: #ffdddd;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transform: scale(0); /* Initial scale to make it pop-up */
+      animation: popUp 1.5s forwards; /* Pop-up animation (slower) */
+    }
+
+    #heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 48px;
+      color: red;
+      animation: pulse 1.5s infinite;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    #signature {
+      font-style: italic;
+      color: #555;
+    }
+
+    #image {
+      width: 70%;
+      max-height: 200px;
+      margin: 20px auto;
+      border: 5px solid #555;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    #left-image, #right-image {
+      position: absolute;
+      width: 100px; /* Adjust the width as needed */
+      height: 100px; /* Adjust the height as needed */
+      border-radius: 50%; /* Optional: Apply border-radius for a circular shape */
+      object-fit: cover;
+      border: 5px solid #fff; /* Optional: Add border for better visibility */
+    }
+
+    #left-image {
+      top: 50%; /* Adjust the top position as needed */
+      left: 10px; /* Adjust the left position as needed */
+      transform: translateY(-50%); /* Center the image vertically */
+    }
+
+    #right-image {
+      top: 50%; /* Adjust the top position as needed */
+      right: 10px; /* Adjust the right position as needed */
+      transform: translateY(-50%); /* Center the image vertically */
+    }
+
+    #love-text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: #ff0000;
+      font-weight: bold;
+      z-index: -1; /* Place the text behind the card */
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes floatCircle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes floatSquare {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(20px); }
+    }
+
+    @keyframes floatTriangle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(15px); }
+    }
+
+    @keyframes popUp {
+      to { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div id="animated-bg">
+    <!-- Animated Elements in the Background -->
+    <div class="animated-heart" style="top: 20%; left: 10%;"></div>
+    <div class="animated-heart" style="top: 50%; left: 60%;"></div>
+    <div class="animated-heart" style="top: 80%; left: 30%;"></div>
+    
+    <div class="animated-star" style="top: 40%; left: 80%;"></div>
+    <div class="animated-star" style="top: 70%; left: 20%;"></div>
+
+    <div class="animated-circle" style="top: 10%; left: 40%;"></div>
+    <div class="animated-circle" style="top: 60%; left: 90%;"></div>
+
+    <div class="animated-square" style="top: 30%; left: 15%;"></div>
+    <div class="animated-square" style="top: 65%; left: 70%;"></div>
+
+    <div class="animated-triangle" style="top: 55%; left: 50%;"></div>
+    <div class="animated-triangle" style="top: 20%; left: 80%;"></div>
+    <!-- Add more animated elements as needed -->
+  </div>
+
+  <div id="card">
+    <!-- Left side image -->
+    <img id="left-image" src="WhatsApp Image 2024-02-09 at 01.24.32_98342718.jpg" alt="Left Image">
+
+    <div id="heart">❤️</div>
+    <div id="message">
+      <h2>Happy Valentine's Day!</h2>
+      <p>You make my heart beat faster!</p>
+      <!-- Add your main image here -->
+      <img id="image" src="WhatsApp Image 2024-02-09 at 01.29.44_2e17d88a.jpg" alt="Valentine's Day Image">
+
+      <!-- Right side image -->
+      <img id="right-image" src="WhatsApp Image 2024-02-09 at 02.23.48_2f93dc37.jpg" alt="Right Image">
+      <h5 id="signature">oh Mere Mahiye Jinna Sohna, Na koi Hoya Na koi Hona</h5>
+    </div>
+    <div id="footer">
+      <p id="signature">With love, for my love.</p>
+    </div>
+  </div>
+
+  <!-- "I LOVE YOU" text behind the card -->
+  <div id="love-text">I LOVE YOU</div>
+</body>
+</html>
